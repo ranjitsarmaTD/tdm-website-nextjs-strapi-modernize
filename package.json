@@ -1,0 +1,30 @@
+{
+  "name": "tdm-website-nextjs-strapi-modernize",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "npm@11.16.0",
+  "description": "TrieDatum marketing website — Next.js 14 App Router front end + Strapi v5 headless CMS + PostgreSQL (npm-workspaces monorepo). Built from the requirements/architecture/test-strategy set in this repo (ADR-005 in A04-2-SOLUTION-ARCHITECTURE/adr/).",
+  "comment:workspaces": "apps/cms (Strapi) is intentionally NOT a hoisted workspace — its dependency tree (ajv 8) conflicts with the Next.js/ESLint toolchain (ajv 6) when hoisted. See ADR-005. It installs independently via the cms:* scripts below.",
+  "workspaces": [
+    "apps/web",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20.11 <23"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace web",
+    "build": "npm run build --workspaces --if-present",
+    "start": "npm run start --workspace web",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "cms:install": "npm --prefix apps/cms install",
+    "cms:develop": "npm --prefix apps/cms run develop",
+    "cms:build": "npm --prefix apps/cms run build",
+    "cms:start": "npm --prefix apps/cms run start"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
