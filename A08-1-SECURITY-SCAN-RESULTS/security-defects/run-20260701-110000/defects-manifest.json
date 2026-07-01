@@ -1,0 +1,113 @@
+{
+  "scan_run": "run-20260701-110000",
+  "target_project": "tdm-website-nextjs-strapi-modernize",
+  "detected_by": "Security Reviewer agent",
+  "detected_date": "2026-07-01",
+  "summary": {
+    "total": 8,
+    "critical": 0,
+    "high": 3,
+    "medium": 4,
+    "low": 1
+  },
+  "defects": [
+    {
+      "defect_id": "SEC-01",
+      "title": "No rate-limiting on POST /api/contact or POST /api/revalidate",
+      "severity": "HIGH",
+      "status": "Open",
+      "component": "API-CONTACT, API-REVALIDATE",
+      "epic_story": "EP-18-S3, EP-26-S1",
+      "affected_files": [
+        "apps/web/app/api/contact/route.ts",
+        "apps/web/app/api/revalidate/route.ts"
+      ],
+      "detail_file": "SEC-01-missing-rate-limiting.md"
+    },
+    {
+      "defect_id": "SEC-02",
+      "title": "Richtext body fields have no documented sanitization step (stored XSS risk)",
+      "severity": "HIGH",
+      "status": "Open",
+      "component": "CMS-CASE-STUDY, CMS-SERVICE, CMS-NEWS-ARTICLE",
+      "epic_story": "EP-23-S1, EP-24-S1",
+      "affected_files": [
+        "apps/cms/src/api/case-study/content-types/case-study/schema.json"
+      ],
+      "detail_file": "SEC-02-richtext-xss-risk.md"
+    },
+    {
+      "defect_id": "SEC-03",
+      "title": "Strapi Public-role permission matrix has no automated regression test",
+      "severity": "HIGH",
+      "status": "Open",
+      "component": "CMS-GLOBAL, CMS-CASE-STUDY, CMS-NEWS-ARTICLE, CMS-SERVICE, CMS-TEAM-MEMBER, CMS-PARTNER, CMS-TESTIMONIAL, CMS-CONTACT-SUBMISSION",
+      "epic_story": "EP-23-S2, EP-23-S3",
+      "affected_files": [
+        "A01-2-REQUIREMENTS/09-cms-seo-and-platform.md"
+      ],
+      "detail_file": "SEC-03-strapi-permission-drift.md"
+    },
+    {
+      "defect_id": "SEC-04",
+      "title": "Contact form has no real bot/spam gate beyond the honeypot (accepted, tracked risk)",
+      "severity": "MEDIUM",
+      "status": "Accepted-Risk / Tracked",
+      "component": "API-CONTACT, SEC-CONTACT-FORM",
+      "epic_story": "EP-18-S2, EP-18-S5",
+      "affected_files": [
+        "apps/web/app/api/contact/route.ts"
+      ],
+      "detail_file": "SEC-04-contact-form-spam-protection.md"
+    },
+    {
+      "defect_id": "SEC-05",
+      "title": "Revalidation secret handling hygiene (non-constant-time compare, no rotation, silent no-op)",
+      "severity": "MEDIUM",
+      "status": "Open",
+      "component": "API-REVALIDATE",
+      "epic_story": "EP-26-S1, EP-26-S2",
+      "affected_files": [
+        "apps/web/app/api/revalidate/route.ts",
+        "apps/cms/src/index.ts"
+      ],
+      "detail_file": "SEC-05-revalidate-secret-hygiene.md"
+    },
+    {
+      "defect_id": "SEC-06",
+      "title": "No security headers configured (CSP / X-Frame-Options / Referrer-Policy / HSTS)",
+      "severity": "MEDIUM",
+      "status": "Open",
+      "component": "SVC-SEO, INFRA-NGINX",
+      "epic_story": "EP-27-S1, EP-24",
+      "affected_files": [
+        "apps/web/next.config.js"
+      ],
+      "detail_file": "SEC-06-missing-security-headers.md"
+    },
+    {
+      "defect_id": "SEC-07",
+      "title": "CI/CD not yet active — no automated dependency/secret scanning runs today",
+      "severity": "MEDIUM",
+      "status": "Open",
+      "component": "INFRA-CI",
+      "epic_story": "EP-27-S5",
+      "affected_files": [
+        "A01-2-REQUIREMENTS/09-cms-seo-and-platform.md"
+      ],
+      "detail_file": "SEC-07-cicd-not-active-no-scanning.md"
+    },
+    {
+      "defect_id": "SEC-08",
+      "title": "No .env.example committed — secrets-hygiene template missing",
+      "severity": "LOW",
+      "status": "Open",
+      "component": "PLATFORM",
+      "epic_story": "EP-18-S5, EP-26-S1, EP-27-S3, EP-27-S4",
+      "affected_files": [
+        "(repo root — .env.example does not exist)"
+      ],
+      "detail_file": "SEC-08-env-example-missing.md"
+    }
+  ]
+}
