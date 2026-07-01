@@ -1,0 +1,118 @@
+{
+  "scan_run": "run-20260701-100000",
+  "detected_date": "2026-07-01",
+  "detected_by": "Standards Enforcer agent (#7)",
+  "target": "tdm-website-nextjs-strapi-modernize @ apps/web/, apps/cms/",
+  "mode": "DETECT-ONLY",
+  "totals": {
+    "count": 9,
+    "critical": 0,
+    "high": 1,
+    "medium": 5,
+    "low": 3
+  },
+  "defects": [
+    {
+      "id": "STD-01",
+      "title": "No tsconfig.json in apps/web or apps/cms — TypeScript strict mode unenforceable",
+      "severity": "High",
+      "priority": "P1",
+      "status": "Open",
+      "category": "tooling / type-safety",
+      "component": "apps/web, apps/cms (package roots)",
+      "affected_files": ["apps/web/package.json", "apps/cms/package.json"],
+      "detail_file": "STD-01-missing-tsconfig-strict-mode.md"
+    },
+    {
+      "id": "STD-02",
+      "title": "No root package.json / npm-workspaces manifest for the monorepo",
+      "severity": "Medium",
+      "priority": "P2",
+      "status": "Open",
+      "category": "project hygiene / monorepo structure",
+      "component": "repo root",
+      "affected_files": ["package.json (repo root — does not exist yet)"],
+      "detail_file": "STD-02-missing-workspace-root-manifest.md"
+    },
+    {
+      "id": "STD-03",
+      "title": "SiteHeader.tsx references a MobileMenu.tsx component that does not exist",
+      "severity": "Medium",
+      "priority": "P2",
+      "status": "Open",
+      "category": "doc-vs-code drift / dead reference",
+      "component": "apps/web/components/layout",
+      "affected_files": ["apps/web/components/layout/SiteHeader.tsx:38-39"],
+      "detail_file": "STD-03-dangling-mobilemenu-reference.md"
+    },
+    {
+      "id": "STD-04",
+      "title": "Case-studies dropdown has no ARIA/keyboard affordance",
+      "severity": "Medium",
+      "priority": "P2",
+      "status": "Open",
+      "category": "accessibility",
+      "component": "apps/web/components/layout/SiteHeader.tsx",
+      "affected_files": ["apps/web/components/layout/SiteHeader.tsx:86-94"],
+      "detail_file": "STD-04-dropdown-missing-aria-and-keyboard-support.md"
+    },
+    {
+      "id": "STD-05",
+      "title": "Hardcoded contact-notification recipient email in the contact API route",
+      "severity": "Low",
+      "priority": "P3",
+      "status": "Open",
+      "category": "config hygiene",
+      "component": "apps/web/app/api/contact",
+      "affected_files": ["apps/web/app/api/contact/route.ts:91"],
+      "detail_file": "STD-05-hardcoded-notification-recipient.md"
+    },
+    {
+      "id": "STD-06",
+      "title": "No committed ESLint config despite apps/web declaring a lint script",
+      "severity": "Medium",
+      "priority": "P2",
+      "status": "Open",
+      "category": "tooling",
+      "component": "apps/web",
+      "affected_files": ["apps/web/package.json"],
+      "detail_file": "STD-06-missing-eslint-config.md"
+    },
+    {
+      "id": "STD-07",
+      "title": "No package-level README.md in apps/web or apps/cms",
+      "severity": "Low",
+      "priority": "P3",
+      "status": "Open",
+      "category": "documentation",
+      "component": "apps/web, apps/cms",
+      "affected_files": ["apps/web/README.md (does not exist)", "apps/cms/README.md (does not exist)"],
+      "detail_file": "STD-07-missing-package-readmes.md"
+    },
+    {
+      "id": "STD-08",
+      "title": "Strapi case-study/global schemas lack maxLength constraints on string/text fields",
+      "severity": "Low",
+      "priority": "P3",
+      "status": "Open",
+      "category": "content model / data validation",
+      "component": "apps/cms/src/api",
+      "affected_files": [
+        "apps/cms/src/api/case-study/content-types/case-study/schema.json",
+        "apps/cms/src/api/global/content-types/global/schema.json"
+      ],
+      "detail_file": "STD-08-strapi-schema-missing-length-constraints.md"
+    },
+    {
+      "id": "STD-09",
+      "title": "No committed .env.example documenting required environment variables",
+      "severity": "Medium",
+      "priority": "P2",
+      "status": "Open",
+      "category": "config hygiene",
+      "component": "apps/web, apps/cms",
+      "affected_files": ["apps/web/.env.example (does not exist)", "apps/cms/.env.example (does not exist)"],
+      "detail_file": "STD-09-missing-env-example.md"
+    }
+  ]
+}
