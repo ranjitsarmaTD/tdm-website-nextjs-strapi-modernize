@@ -1,0 +1,24 @@
+{
+  "run_id": "run-20260701-090000",
+  "campaign": "TP-000-master-campaign-plan",
+  "environment": "none (no apps/web or apps/cms instance has been started yet)",
+  "generated_by": "test-automation agent (A06 phase)",
+  "counts": {
+    "planned": 5,
+    "blocked": 5,
+    "executed": 0,
+    "pass": 0,
+    "fail": 0
+  },
+  "specs": [
+    { "id": "E2E-homepage", "file": "test-plans-and-code/e2e/homepage.spec.ts", "status": "blocked", "reason": "no running apps/web instance" },
+    { "id": "E2E-contact-form", "file": "test-plans-and-code/e2e/contact-form.spec.ts", "status": "blocked", "reason": "no running apps/web instance" },
+    { "id": "E2E-case-study-journey", "file": "test-plans-and-code/e2e/case-study-journey.spec.ts", "status": "blocked", "reason": "no running apps/web + apps/cms instance" },
+    { "id": "INT-strapi-permissions", "file": "test-plans-and-code/integration/strapi-permissions.test.ts", "status": "blocked", "reason": "no running apps/cms instance / no seeded database" },
+    { "id": "INT-revalidate-webhook", "file": "test-plans-and-code/integration/revalidate-webhook.test.ts", "status": "blocked", "reason": "no running apps/web instance to receive the webhook" }
+  ],
+  "gate": {
+    "launch_ready": false,
+    "reason": "0 of 5 planned specs have been executed against a live environment; this is a first, pre-implementation planning pass, not a launch verification run"
+  }
+}
