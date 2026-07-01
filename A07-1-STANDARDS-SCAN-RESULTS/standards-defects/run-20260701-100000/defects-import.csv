@@ -1,0 +1,10 @@
+ID,Title,Severity,Priority,File,Status
+STD-01,No tsconfig.json in apps/web or apps/cms -- TypeScript strict mode unenforceable,High,P1,apps/web/package.json; apps/cms/package.json,Open
+STD-02,No root package.json / npm-workspaces manifest for the monorepo,Medium,P2,package.json (repo root -- does not exist yet),Open
+STD-03,SiteHeader.tsx references a MobileMenu.tsx component that does not exist,Medium,P2,apps/web/components/layout/SiteHeader.tsx:38-39,Open
+STD-04,Case-studies dropdown has no ARIA/keyboard affordance,Medium,P2,apps/web/components/layout/SiteHeader.tsx:86-94,Open
+STD-05,Hardcoded contact-notification recipient email in the contact API route,Low,P3,apps/web/app/api/contact/route.ts:91,Open
+STD-06,No committed ESLint config despite apps/web declaring a lint script,Medium,P2,apps/web/package.json,Open
+STD-07,No package-level README.md in apps/web or apps/cms,Low,P3,apps/web/README.md; apps/cms/README.md,Open
+STD-08,Strapi case-study/global schemas lack maxLength constraints on string/text fields,Low,P3,apps/cms/src/api/case-study/content-types/case-study/schema.json,Open
+STD-09,No committed .env.example documenting required environment variables,Medium,P2,apps/web/.env.example; apps/cms/.env.example,Open
